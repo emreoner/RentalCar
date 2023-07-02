@@ -20,7 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CrossCuttingConcerns\Caching\Microsoft\" />
     <Folder Include="CrossCuttingConcerns\Caching\Redis\" />
   </ItemGroup>
 
