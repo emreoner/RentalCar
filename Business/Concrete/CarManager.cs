@@ -3,6 +3,7 @@ using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConcerns.Performance;
 using Core.CrossCuttingConcerns.Transaction;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
@@ -51,6 +52,8 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllCarDetails());
         }
 
+        [CacheAspect]
+        [PerformanceAspect(5)]//Burdaki operasyon 5sn yi gecerse beni uyar diyuoruz
         public IDataResult<Car> GetById(int id)
         {
             return new SuccessDataResult<Car>(_carDal.Get(c => c.Id == id));
